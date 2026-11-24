@@ -1,0 +1,5 @@
+# Android Studio generates local.properties automatically upon opening /android.
+# Copy to local.properties only if building from CLI outside Android Studio:
+# macOS: sdk.dir=/Users/<user>/Library/Android/sdk
+# Linux: sdk.dir=/home/<user>/Android/Sdk
+# Windows: sdk.dir=C\:\\Users\\<user>\\AppData\\Local\\Android\\Sdk

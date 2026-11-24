@@ -343,7 +343,7 @@ public final class RecordingService extends Service {
     private void startForegroundWithType(Notification notification, boolean includeMic) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             int type = ServiceInfo.FOREGROUND_SERVICE_TYPE_MEDIA_PROJECTION;
-            if (includeMic) {
+            if (includeMic && Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 type |= ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE;
             }
             startForeground(NOTIFICATION_ID, notification, type);
