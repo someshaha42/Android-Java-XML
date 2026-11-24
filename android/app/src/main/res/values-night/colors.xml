@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="fc_background">#FF0D0F14</color>
+    <color name="fc_surface">#FF151821</color>
+    <color name="fc_surface_variant">#FF1E2330</color>
+    <color name="fc_outline">#FF2D3446</color>
+    <color name="fc_outline_variant">#FF232836</color>
+    <color name="fc_on_surface">#FFF3F4F6</color>
+    <color name="fc_on_surface_variant">#FF9CA3AF</color>
+
+    <color name="fc_primary">#FFDC2626</color>
+    <color name="fc_on_primary">#FFFFFFFF</color>
+    <color name="fc_primary_container">#FF3F1216</color>
+    <color name="fc_on_primary_container">#FFFFDAD6</color>
+
+    <color name="fc_secondary">#FF60A5FA</color>
+    <color name="fc_on_secondary">#FF0A1D3D</color>
+    <color name="fc_secondary_container">#FF1E3254</color>
+    <color name="fc_on_secondary_container">#FFD8E5FF</color>
+
+    <color name="fc_tertiary">#FF10B981</color>
+    <color name="fc_on_tertiary">#FF04261B</color>
+
+    <color name="fc_error">#FFF87171</color>
+    <color name="fc_on_error">#FF450A0A</color>
+    <color name="fc_error_container">#FF5C1616</color>
+    <color name="fc_on_error_container">#FFFEE2E2</color>
+
+    <color name="fc_record_accent">#FFDC2626</color>
+    <color name="fc_record_deep">#FFB91C1C</color>
+    <color name="fc_record_container">#FF3F1216</color>
+    <color name="fc_paused_accent">#FFD97706</color>
+    <color name="fc_paused_container">#FF3A240B</color>
+    <color name="fc_ready_accent">#FF10B981</color>
+    <color name="fc_ready_container">#FF0C2E24</color>
+    <color name="fc_handle_stroke_dark">#FF111318</color>
+</resources>

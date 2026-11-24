@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.FrameCut" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/fc_primary</item>
+        <item name="colorOnPrimary">@color/fc_on_primary</item>
+        <item name="colorPrimaryContainer">@color/fc_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/fc_on_primary_container</item>
+        <item name="colorSecondary">@color/fc_secondary</item>
+        <item name="colorOnSecondary">@color/fc_on_secondary</item>
+        <item name="colorSecondaryContainer">@color/fc_secondary_container</item>
+        <item name="colorOnSecondaryContainer">@color/fc_on_secondary_container</item>
+        <item name="colorTertiary">@color/fc_tertiary</item>
+        <item name="colorOnTertiary">@color/fc_on_tertiary</item>
+        <item name="android:colorBackground">@color/fc_background</item>
+        <item name="colorSurface">@color/fc_surface</item>
+        <item name="colorOnSurface">@color/fc_on_surface</item>
+        <item name="colorSurfaceVariant">@color/fc_surface_variant</item>
+        <item name="colorOnSurfaceVariant">@color/fc_on_surface_variant</item>
+        <item name="colorOutline">@color/fc_outline</item>
+        <item name="colorOutlineVariant">@color/fc_outline_variant</item>
+        <item name="colorError">@color/fc_error</item>
+        <item name="colorOnError">@color/fc_on_error</item>
+        <item name="colorErrorContainer">@color/fc_error_container</item>
+        <item name="colorOnErrorContainer">@color/fc_on_error_container</item>
+        <item name="android:statusBarColor">@color/fc_background</item>
+        <item name="android:navigationBarColor">@color/fc_background</item>
+        <item name="android:fontFamily">@font/plus_jakarta_sans</item>
+    </style>
+
+    <style name="TextAppearance.FrameCut.Display" parent="TextAppearance.Material3.HeadlineSmall">
+        <item name="fontFamily">@font/space_grotesk</item>
+        <item name="android:fontFamily">@font/space_grotesk</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.FrameCut.Timer" parent="TextAppearance.Material3.DisplayMedium">
+        <item name="fontFamily">@font/jetbrains_mono</item>
+        <item name="android:fontFamily">@font/jetbrains_mono</item>
+        <item name="android:textSize">40sp</item>
+        <item name="android:fontFeatureSettings">tnum</item>
+    </style>
+
+    <style name="TextAppearance.FrameCut.Mono" parent="TextAppearance.Material3.LabelMedium">
+        <item name="fontFamily">@font/jetbrains_mono</item>
+        <item name="android:fontFamily">@font/jetbrains_mono</item>
+        <item name="android:fontFeatureSettings">tnum</item>
+    </style>
+</resources>

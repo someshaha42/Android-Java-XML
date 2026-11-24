@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fc_space_xs">4dp</dimen>
+    <dimen name="fc_space_sm">8dp</dimen>
+    <dimen name="fc_space_md">12dp</dimen>
+    <dimen name="fc_space_lg">14dp</dimen>
+    <dimen name="fc_space_xl">16dp</dimen>
+    <dimen name="fc_space_2xl">20dp</dimen>
+    <dimen name="fc_space_3xl">24dp</dimen>
+
+    <dimen name="fc_radius_xs">8dp</dimen>
+    <dimen name="fc_radius_sm">10dp</dimen>
+    <dimen name="fc_radius_md">12dp</dimen>
+    <dimen name="fc_radius_lg">14dp</dimen>
+    <dimen name="fc_radius_xl">16dp</dimen>
+    <dimen name="fc_radius_2xl">18dp</dimen>
+    <dimen name="fc_radius_3xl">20dp</dimen>
+    <dimen name="fc_radius_console">24dp</dimen>
+
+    <dimen name="fc_min_touch_target">48dp</dimen>
+    <dimen name="fc_primary_btn_height">56dp</dimen>
+    <dimen name="fc_secondary_btn_height">54dp</dimen>
+    <dimen name="fc_library_btn_height">52dp</dimen>
+    <dimen name="fc_brand_badge_size">30dp</dimen>
+    <dimen name="fc_recording_thumb_size">52dp</dimen>
+    <dimen name="fc_region_preview_width">74dp</dimen>
+</resources>
