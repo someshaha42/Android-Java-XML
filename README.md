@@ -1,26 +1,59 @@
 # FrameCut
 
-Browser-based screen, window, and region recorder with an integrated photo & video crop tool built with React, TypeScript, Vite, Tailwind CSS v4, Web `MediaDevices`, Canvas 2D, `MediaRecorder`, and IndexedDB.
+**FrameCut** is a native **Android (Java 11 + XML Views + Groovy Gradle)** screen recorder and universal photo/video cropper arranged at the repository root for direct **Android Studio** import and automated **GitHub Actions** debug APK builds.
 
-## Core Features
+## Android Studio Project Structure (Root)
 
-- **Full Screen & Region Capture**: Record an entire display, window, or browser tab via `navigator.mediaDevices.getDisplayMedia`, or crop live in real time using an offscreen HTML5 Canvas (`captureStream`) bounded by your selected pixel region.
-- **Interactive Region Selector Overlay**: Drag handles, move the bounding frame, or snap to aspect-ratio presets (`Free`, `16:9`, `9:16`, `4:3`, `1:1`) with an optional animated red border preview.
-- **Configurable Video & Audio Pipeline**: Choose bitrate presets (`100` to `350 Mbps` or custom), `Portrait` / `Landscape` orientation modes, `30` / `60 FPS` (or custom), GOP interval, color depth/range metadata preferences, and `Internal Audio` (shared tab/system audio) or `Microphone` (`getUserMedia`) capture.
-- **Recorded Videos Library**: Captured recordings are persisted locally in browser IndexedDB (`framecut_recordings_db`) for instant in-app playback, downloading, or deletion.
-- **Media Crop Tool**: Inspect local photos (JPEG, PNG, WebP, GIF, BMP) and videos (MP4, MOV, MKV, WebM), drag a normalized crop box with aspect presets, export 1:1 full-frame stream copies without re-encoding, or confirm (`CANCEL` / `CONTINUE`) to customize output resolution, FPS, bitrate, quality, and format before Canvas/MediaRecorder export.
-- **Studio Dark & Studio Light Themes**: Toggle between Studio Dark and Studio Light palettes backed by `Space Grotesk`, `Plus Jakarta Sans`, and `JetBrains Mono` typography.
+```text
+.
+├── .github/workflows/build-apk.yml   # Automated GitHub Actions Debug APK build
+├── build.gradle                      # Android Gradle Plugin 8.7.3
+├── settings.gradle                   # Root project & :app module
+├── gradle.properties
+├── gradlew / gradlew.bat
+├── gradle/wrapper/gradle-wrapper.properties  # Gradle 8.11.1
+└── app/
+    ├── build.gradle                  # compileSdk 35, minSdk 26, Java 11, ViewBinding
+    ├── proguard-rules.pro
+    └── src/
+        ├── main/
+        │   ├── AndroidManifest.xml
+        │   ├── java/com/aistudio/framecut/
+        │   │   ├── audio/            # AudioCaptureManager (Mic + API 29+ internal playback AAC)
+        │   │   ├── capture/          # ScreenCaptureManager (MediaProjection + VirtualDisplay)
+        │   │   ├── crop/             # PhotoCropEngine, VideoCropEngine, MediaCropInspector
+        │   │   ├── encoder/          # VideoEncoder (HEVC/H.264) + GlRegionCropper (EGL14/OES)
+        │   │   ├── model/            # Enums, NormalizedRegion, PixelRegion, SettingsStore
+        │   │   ├── muxer/            # MediaMuxerManager + MediaStore export
+        │   │   ├── recordings/       # RecordingsRepository (MediaStore query/delete)
+        │   │   ├── region/           # RegionSelectionManager, RegionBorderView, RegionOverlayManager
+        │   │   ├── service/          # RecordingService + RecordingSessionBus
+        │   │   └── ui/               # MainActivity, SettingsActivity, RecordingsActivity, CropToolActivity, Views
+        │   └── res/
+        │       ├── drawable/         # Adaptive launcher icon + vector icons + shape drawables
+        │       ├── font/             # space_grotesk.ttf, plus_jakarta_sans.ttf, jetbrains_mono.ttf
+        │       ├── layout/           # XML layouts for all screens & dialogs
+        │       ├── mipmap-anydpi-v26/# Adaptive ic_launcher & ic_launcher_round
+        │       ├── values/           # colors, dimens, strings, themes
+        │       ├── values-night/     # dark theme colors
+        │       └── xml/              # file_paths.xml
+        ├── test/java/com/aistudio/framecut/
+        │   └── RegionAndCropMapperTest.java
+        └── androidTest/java/com/aistudio/framecut/
+            └── AppPackageInstrumentedTest.java
+```
 
-## Tech Stack & Scripts
+## Importing into Android Studio
 
-- React `19`, TypeScript `5.7`, Vite `6`, Tailwind CSS `4`, `lucide-react`
-- Browser APIs: `getDisplayMedia`, `getUserMedia`, `MediaRecorder`, HTML5 `<canvas>` (`captureStream`, `toBlob`), `IndexedDB`, `localStorage`
-- Development server (port `3000`, host `0.0.0.0`): `npm run dev`
-- Type-check & lint: `npm run lint`
-- Production build: `npm run build`
+1. Open **Android Studio** (Ladybug or newer with JDK 17).
+2. Choose **File → Open…** and select the **repository root directory**.
+3. Allow Gradle Sync to complete (`Gradle 8.11.1`, `AGP 8.7.3`).
+4. Run on a device/emulator or choose **Build → Build Bundle(s) / APK(s) → Build APK(s)**.
 
-## Browser Limitations
+## Automated GitHub Actions Debug APK Build
 
-- Screen capture (`getDisplayMedia`) requires a secure context (`https://` or `localhost`) and user permission per session.
-- Browser `MediaRecorder` codec support depends on the host browser (prefers `MP4` when supported, falling back to `WebM` VP9/VP8) and practical encoder bitrates are clamped for browser stability.
-- System-wide Android floating overlays (`SYSTEM_ALERT_WINDOW`) are not available in standard web browsers; region preview is rendered inside the app workspace and overlay editor.
+Every push, pull request, or manual run triggers `/.github/workflows/build-apk.yml`:
+1. Sets up **JDK 17**, **Android SDK**, **Gradle 8.11.1**, and a temporary debug keystore.
+2. Runs `gradle :app:testDebugUnitTest --no-daemon --stacktrace`.
+3. Builds the APK with `gradle :app:assembleDebug --no-daemon --stacktrace`.
+4. Uploads **`FrameCut-debug-apk`** (`app/build/outputs/apk/debug/*.apk`) under the **Actions** tab.
